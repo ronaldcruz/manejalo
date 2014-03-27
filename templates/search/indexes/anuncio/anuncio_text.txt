@@ -1,0 +1,4 @@
+{{ object.marca.nombre }}
+{{ object.modelo.nombre }}
+{{ object.anio }}
+{{ object.carroceria }}

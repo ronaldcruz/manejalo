@@ -1,0 +1,121 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Manejalo.cl</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+
+
+
+
+    <!-- Custom CSS Assets -->
+
+    <link href="{% static 'assets/css/scojs.css' %}"  rel="stylesheet">
+    <link href="{% static 'assets/css/jquery.fs.selecter.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.fs.scroller.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.css' %}">
+    <link href="{% static 'assets/css/theme.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+
+    {% block extra_js %}{% endblock %}
+</head>
+
+<body>
+
+
+
+    {% block body %}{% endblock %}
+
+    
+
+    <!-- Footer -->
+
+    {% include "site/footer.html" %}
+
+    <!-- /Footer -->
+
+    <!-- javascript -->
+    
+    <script src="{% static 'assets/js/jquery.fs.selecter.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.fs.picker.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.fs.scroller.js' %}"></script>
+
+    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+    <script src="{% static 'assets/js/sco.modal.js' %}"></script>
+    <script src="{% static 'assets/js/sco.confirm.js' %}"></script>
+    <script src="{% static 'assets/js/sco.ajax.js' %}"></script>
+    <script src="{% static 'assets/js/sco.collapse.js' %}"></script>
+    <script src="{% static 'assets/js/sco.countdown.js' %}"></script>
+    <script src="{% static 'assets/js/sco.message.js' %}"></script>
+
+
+
+
+    <script>
+        $(document).ready(function (e) {
+
+
+
+
+            $(".selecter_label_1").selecter({
+                defaultLabel: "Seleccione"
+            });
+
+            $(".selecter_label_2").selecter({
+                defaultLabel: "Seleccione"
+            });
+
+            $(".selecter_label_3").selecter({
+                defaultLabel: "Condition"
+            });
+
+            $(".selecter_label_4").selecter({
+                defaultLabel: "Transmision"
+            });
+
+            $("input[type=checkbox], input[type=radio]").picker();
+
+        });
+    </script>
+    <!-- /Javascript -->
+
+    {% block extra_script %}{% endblock %}
+
+    {% if messages %}
+    <script type="text/javascript">
+
+    $(function() {
+
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                $.scojs_message('<i class="fa fa-check-circle"></i> <strong>{{ message }}', $.scojs_message.TYPE_OK);        
+            {% endif %}
+
+            {% if message.tags == 'error' %}
+                $.scojs_message('<i class="fa fa-exclamation-circle"></i> <strong>{{ message }}', $.scojs_message.TYPE_ERROR);    
+            {% endif %}
+
+        {% endfor %}
+    });
+
+    </script>
+    {% endif %}
+    
+
+</body>
+
+</html>

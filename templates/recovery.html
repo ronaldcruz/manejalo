@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <div id="wrap">
+        <div id="landing">
+            <div class="header-image">
+                <div class="container">
+                    <div class="auth-unit">
+
+                        <h3 class="text-brand"><span class="glyphicon glyphicon-dashboard"></span> Manejalo<span class="sec-brand">.cl</span></h3>
+                        <div class="auth-unit-top">
+                            <h3>Recuperar Contraseña</h3>
+                            <p>Te enviaremos un link para que recuperes tus datos de acceso</p>
+                        </div>
+
+
+                        <div class="auth-unit-inner">
+                            <form action="{% url 'recovery' %}" role="form" class="tooltip-demo" method="POST">
+                                {% csrf_token %}
+
+                                {% include "fields/input.html" with field=form.email placeholder="juanito@perez.com" type="email" %}
+
+                                <button type="submit" class="btn btn-danger btn-block">Recuperar Contraseña</button>
+                            </form>
+                        </div>
+
+                        <br>
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-block btn-lg"><strong>Ingresa</strong> a tu cuenta</a>
+                        <a href="{% url 'signup' %}" class="btn btn-success btn-block btn-lg"><strong>Regístrate</strong> gratis</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /header-image -->
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+
+<div id="wrap">
+    <div id="landing">
+        <div class="header-image">
+            <div class="container">
+                <div class="auth-unit">
+
+                    <h3 class="text-brand"><span class="glyphicon glyphicon-dashboard"></span> Manejalo<span class="sec-brand">.cl</span></h3>
+
+
+                    <div class="auth-unit-top">
+                        <h3>Ingresa</h3>
+                        <p>Accede a tu cuenta y revisa tu perfil</p>
+                    </div>
+
+
+                    <div class="auth-unit-inner">
+                        <form action="{% url 'login' %}" role="form" class="tooltip-demo" method="POST">
+                            {% csrf_token %}
+
+                            {% include "fields/input.html" with field=form.email placeholder="juanito@perez.com" type="email" %}
+
+                            {% include "fields/login_password.html" with field=form.password %}
+                            
+                            <button class="btn btn-primary btn-block" type="submit"><strong>Ingresar</strong> a mi cuenta</button>
+                            
+                            <!--
+                            <hr>
+
+                            <div class="btn-group btn-group-justified">
+                                <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Sign in with Twitter" role="button"><i class="fa fa-twitter"></i></a>
+                                <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Sign in with Facebook" role="button"><i class="fa fa-facebook"></i></a>
+                                <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Sign in with Google+" role="button"><i class="fa fa-google-plus"></i></a>
+                                <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Sign in with Linkedin" role="button"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                            -->
+                        </form>
+
+                    </div>
+                    <br>
+
+                    <a href="signup.html" class="btn btn-success btn-block btn-lg"><strong>Regístrate</strong> gratis</a>
+
+                </div>
+            </div>
+        </div>
+        <!-- /header-image -->
+    </div>
+
+</div>    
+
+{% endblock %}

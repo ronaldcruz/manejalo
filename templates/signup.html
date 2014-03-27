@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+    <div id="wrap">
+        <div id="landing">
+            <div class="header-image">
+                <div class="container">
+                    
+                        <div class="auth-unit">
+
+                            <h3 class="text-brand"><span class="glyphicon glyphicon-dashboard"></span> Manejalo<span class="sec-brand">.cl</span></h3>
+
+                            <div class="auth-unit-top">
+                                <h3>Regístrate</h3>
+                                <p>¡Es gratis!</p>
+                            </div>
+
+                            <div class="auth-unit-inner">
+                            
+                            <form action="{% url 'signup' %}" role="form" method="POST">
+                                {% csrf_token %}
+                                
+                                {% include "fields/input.html" with field=form.first_name placeholder="Juan" type="input" %}
+
+                                {% include "fields/input.html" with field=form.last_name placeholder="Perez" type="input" %}
+
+                                {% include "fields/input.html" with field=form.email placeholder="juanito@perez.com" type="email" %}
+
+                                {% include "fields/input.html" with field=form.password type="password" %}
+                                
+                                {% include "fields/input.html" with field=form.username placeholder="juanperez" type="hidden" %}
+                                <button class="btn btn-block btn-success" type="submit">Registrarme</button>
+                            </form>
+<!--                             </form>
+                                <hr>
+
+                                <div class="btn-group btn-group-justified">
+                                    <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Login with Twitter" role="button"><i class="fa fa-twitter"></i></a>
+                                    <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Login in with Facebook" role="button"><i class="fa fa-facebook"></i></a>
+                                    <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Login in with Google+" role="button"><i class="fa fa-google-plus"></i></a>
+                                    <a class="btn btn-default btn-lg" data-toggle="tooltip" title="Login in with Linkedin" role="button"><i class="fa fa-linkedin"></i></a>
+                                </div>
+-->
+                                
+                            </div>
+
+                            <br>
+
+                            <button class="btn btn-primary btn-block btn-lg"><strong>Ingresa</strong> a tu cuenta</button>
+
+                        </div>
+                   
+                </div>
+            </div>
+            <!-- /header-image -->
+        </div>
+    </div>
+{% endblock %}

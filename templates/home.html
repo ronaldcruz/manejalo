@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block body %}
+    <div id="wrap">
+
+        <!-- /Header Section -->
+
+        <div id="landing">
+            <div class="header-image">
+                <div class="headline">
+
+
+                    <div class="container">
+
+                        <div class="header">
+                            <ul class="nav nav-pills pull-right">
+                                <li class="active">
+                                    <a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span> Ingresa</a></a>
+                                </li>
+                                <li class="active"><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-plus"></span> Registrate</a>
+                                </li>
+
+                            </ul>
+                            <h3 class="text-muted"><span class="glyphicon glyphicon-dashboard"></span> Manejalo<span class="sec-brand">.cl</span></h3>
+                        </div>
+
+
+
+                        <h1>Encuentra el auto de tus sueños de manera fácil y rápida</h1>
+                        <p class="subline">Más de <strong>52<span class="dynamo" data-lines="1,2,3">0</span></strong> vehículos para que selecciones el que más te guste</p>
+
+                        <h6 class="text-muted">Click the "GO" button to navigate to the other pages</h6>
+
+
+                    </div>
+                </div>
+
+
+                <div class="search-block">
+                    <div class="container">
+                        <form class="form-inline" role="form" action="{% url 'haystack_search' %}" >
+                            <div class="row">
+                                <div class="input-group">
+                                    <input type="text" class="form-control input-lg" placeholder="Chevrolet Corsa 2012 Full Equipo" name="q">
+                                    <span class="input-group-btn">
+                                        <button type="submit" class="btn btn-success btn-lg">Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /header-image -->
+        </div>
+
+        <!-- /Header Section -->
+
+
+
+        <!-- Section 1 -->
+
+        <div class="section secondary">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 animated slideInDown">
+                        <h4> Thousands of vehicles to choose from</h4>
+                        <p>eu singulis petentium. Ea quo modus officiis, tation mucius conclusionemque an vix. Ad vix deserunt consequat quaerendum.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 animated fadeInUpBig">
+                        <h4>Finding a car has never been easier</h4>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 animated slideInRight">
+                        <h4>Search for vehicles forsale in your area</h4>
+                        <p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis.</p>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+
+        </div>
+
+        <!-- /Section 1 -->
+
+
+
+        <!-- Section 2 -->
+
+        <div class="section">
+            <div class="container">
+
+                <div class="featurette animated slideInLeft">
+                    <img alt="thumbnail" class="featurette-image img-circle img-responsive pull-right animated fade" src="{% static 'assets/img/s-1.jpg' %}">
+                    <h2 class="featurette-heading">Praesent commodo <span class="text-muted">metus auctor fringilla</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <div class="featurette animated slideInRight">
+                    <img alt="thumbnail" class="featurette-image img-circle img-responsive pull-left animated fade" src="{% static 'assets/img/s-2.jpg' %}">
+                    <h2 class="featurette-heading">Scelerisque nisl. ac cursus commodo <span class="text-muted">commodo cursus magna.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <div class="featurette animated slideInLeft">
+                    <img alt="thumbnail" class="featurette-image img-circle img-responsive pull-right animated fade" src="{% static 'assets/img/s-3.jpg' %}">
+                    <h2 class="featurette-heading">Fusce dapibus<span class="text-muted">Vestibulum id ligula porta felis.</span></h2>
+                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                </div>
+
+                <hr>
+
+            </div>
+        </div>
+
+        <!-- /Section 2 -->
+
+
+        <!-- Section 3 -->
+
+        <div class="sec-features">
+            <div class="container">
+                <h2 class="text-center">Feature Rich <small>Secondary text</small></h2>
+                <hr>
+
+                <ul class="grid">
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-globe"></i><a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-map-marker"></i> <a href="#">Nulla non metus auctor </a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-heart-o"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-comments-o"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-thumbs-o-up"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h5><i class="fa fa-search"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+
+                        <div>
+                            <h5><i class="fa fa-camera"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+
+                            <h5><i class="fa fa-cloud"></i> <a href="#">Donec ullamcorper nulla</a></h5>
+                            <p>onec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <!-- /Section 3 -->
+
+
+
+
+
+    </div>
+    <!-- /Wrap -->
+
+    <!-- JS Assets -->
+    {% block extra_script %}
+
+    <script type="text/javascript" src="{% static 'assets/js/dynamo.min.js' %}"></script>
+
+    {% endblock %}
+
+{% endblock  %}

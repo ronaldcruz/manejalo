@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div id="wrap">
+
+    <div id="login" class="collapse">
+        <div class="container">
+            <div class="top-form-inner">
+
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputPassword2">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                    </div>
+                    <a href="login.html" class="btn btn-primary">Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar  navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}"><span class="glyphicon glyphicon-dashboard"></span> Manejalo<span class="sec-brand">.cl</span></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control input-sm" placeholder="Search...">
+                    </div>
+                </form>
+
+                <p class="navbar-text pull-right">Already a user? <a data-toggle="collapse" data-target="#login" class="navbar-link">Login</a>
+                </p>
+
+                <div class="btn-toolbar pull-right">
+                    <div class="btn-group"><a href="{% url 'advertisement_create' %}" class="btn btn-primary navbar-btn btn-sm"><i class="fa fa-plus-circle"></i> Crear Anuncio</a>
+                    </div>
+                    <div class="btn-group"><a href="signup.html" class="btn btn-success navbar-btn btn-sm"><span class="glyphicon glyphicon-user"></span> Create an account</a>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    {% include "site/menu.html" %}
+
+    {% block content %}No content{% endblock %}
+
+
+</div>
+
+<!-- /Wrap -->
+
+
+{% endblock %}
