@@ -1,0 +1,6 @@
+initial_data.json
+*.pyc
+*.log
+*.sh
+.DS_Store
+data.db
