@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'app',
     'anuncio',
     'south',
-    'rest_framework',
     'django_nose',
 )
 
@@ -128,10 +127,5 @@ HAYSTACK_CONNECTIONS  =  {
 
 
 STATIC_URL = '/static/'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'PAGINATE_BY': 10
-}
 
 #TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

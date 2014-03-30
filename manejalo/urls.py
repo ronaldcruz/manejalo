@@ -9,10 +9,6 @@ from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 from usuarios.models import Usuario
 from anuncio.forms import AnuncioSearchForm
-from rest_framework import viewsets, routers
-
-
-from usuarios.views import UsuarioViewSet
 
 sqs = SearchQuerySet().all()
 #sqs = SearchQuerySet().filter(author='john')
@@ -26,7 +22,6 @@ urlpatterns = patterns('',
     #url(r'^rest', include(router.urls)),
     url(r'^admin/', include(admin.site.urls)),
     #url(r'^search/', include('haystack.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 )
 
 urlpatterns += patterns('haystack.views',

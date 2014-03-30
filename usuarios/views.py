@@ -4,19 +4,8 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from usuarios.forms import SignUpForm, LoginForm, RecoveryForm
 from usuarios.models import Usuario
-from usuarios.serializers import UsuarioSerializer
+
 import uuid
-
-from rest_framework import viewsets
-from usuarios.serializers import UsuarioSerializer
-
-
-class UsuarioViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows users to be viewed or edited.
-    """
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
 
 
 
