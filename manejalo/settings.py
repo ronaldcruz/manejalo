@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -43,7 +42,8 @@ INSTALLED_APPS = (
     'app',
     'anuncio',
     'south',
-    'rest_framework'
+    'rest_framework',
+    'django_nose',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -133,3 +133,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
     'PAGINATE_BY': 10
 }
+
+#TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
