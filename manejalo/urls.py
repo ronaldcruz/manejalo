@@ -9,6 +9,16 @@ from haystack.query import SearchQuerySet
 from haystack.views import SearchView
 from usuarios.models import Usuario
 from anuncio.forms import AnuncioSearchForm
+from anuncio.api import AnuncioResource, MarcaResource, ModeloResource, CarroceriaResource, TipoResource
+from demografia.api import ComunaResource
+
+
+anuncio_resource = AnuncioResource()
+marca_resource = MarcaResource()
+modelo_resource = ModeloResource()
+carroceria_resource = CarroceriaResource()
+tipo_resource = CarroceriaResource()
+comuna_resource = ComunaResource()
 
 sqs = SearchQuerySet().all()
 #sqs = SearchQuerySet().filter(author='john')
@@ -20,7 +30,16 @@ urlpatterns = patterns('',
     # url(r'^$', 'manejalo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     #url(r'^rest', include(router.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
+    (r'^api/', include(anuncio_resource.urls)),
+    (r'^api/', include(marca_resource.urls)),
+    (r'^api/', include(modelo_resource.urls)),
+    (r'^api/', include(carroceria_resource.urls)),
+    (r'^api/', include(tipo_resource.urls)),
+    (r'^api/', include(comuna_resource.urls)),
+    
     #url(r'^search/', include('haystack.urls')),
 )
 

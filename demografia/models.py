@@ -19,8 +19,8 @@ class Ciudad(models.Model):
     
 class Comuna(models.Model):
 
+    ciudad = models.ForeignKey(Ciudad)
     nombre = models.CharField(max_length=200)
-    sigla = models.CharField(max_length=200)
 
 
     def __unicode__(self):

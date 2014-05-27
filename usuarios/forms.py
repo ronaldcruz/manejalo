@@ -4,14 +4,13 @@ from usuarios.models import Usuario
 
 class SignUpForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100, label=u"Nombre")
-    last_name = forms.CharField(max_length=100, label=u"Apellido")
     username = forms.CharField(max_length=100, label=u"Usuario", required=False)
     email = forms.EmailField(label=u"Correo Electrónico")
     password = forms.CharField(max_length=100, label="Contraseña")
 
     class Meta:
         model = Usuario
-        fields = ['first_name', 'last_name', 'email', 'password']
+        fields = ['first_name', 'email', 'password']
     
 
     def clean_email(self):

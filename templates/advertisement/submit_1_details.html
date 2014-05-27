@@ -1,3 +1,5 @@
+{% load widget_tweaks %}
+
 <div class="tab-pane in active" id="section_details">
     <div class="form-group">
         <label for="exampleInputEmail1">Título</label>
@@ -8,84 +10,63 @@
         <div class="row">
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">Tipo Vehículo</label>
-                <select class="form-control">
-                    <option>Automóvil</option>
-                </select>
+                {{ form.tipo_vehiculo }}
             </div>
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">Patente</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="ZYBC87">
+                {{ form.patente|add_class:"form-control"|attr:"placeholder:Ej: BCDF12" }}
             </div>
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">Carrocería</label>
-                <select class="form-control">
-                    <option>Cabina Simple</option>
-                    <option>Sedán</option>
-                    <option>Hatchback</option>
-                </select>
+                {{ form.carroceria }}
             </div>
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">Año</label>
-                <select class="form-control">
-                    <option>2001</option>
-                    <option>2002</option>
-                    <option>2003</option>
-                    <option>2004</option>
-                    <option>2005</option>
-                    <option>2006</option>
-                    <option>2007</option>
-                    <option>2008</option>
-                    <option>2009</option>
-                    <option>2010</option>
-                    <option>2011</option>
-                    <option>2012</option>
-                    <option>2013</option>
-                </select>
+                {{ form.anio }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Marca</label>
+                {{ form.marca }}
+            </div>
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Modelo</label>
+                {{ form.modelo }}
+            </div>
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Versión</label>
+                {{ form.version|add_class:"form-control" }}
+            </div>
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Color</label>
+                {{ form.color|add_class:"form-control"|attr:"placeholder:Ej: Azul Eléctrico" }}
             </div>
         </div>
     </div> 
     <div class="form-group">
         <div class="row">
             <div class="col-xs-3">
-                <label for="exampleInputEmail1">Marca</label>
-                <select class="form-control">
-                    <option>Chevrolet</option>
-                    <option>Kia</option>
-                    <option>Mazda</option>
-                    <option>Peugeot</option>
-                    <option>Suzuki</option>
-                </select>
+                <label for="exampleInputEmail1">Ciudad</label>
+                {{ form.comuna }}
             </div>
             <div class="col-xs-3">
-                <label for="exampleInputEmail1">Modelo</label>
-                <select class="form-control">
-                    <option>Aveo</option>
-                    <option>Corsa</option>
-                    <option>Baleno</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Versión</label>
-                <select class="form-control">
-                    <option>GLX Sport</option>
-                    <option>GLA AT</option>
-                </select>
-            </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Color</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="">
+                <label for="exampleInputEmail1">Comuna</label>
+                {{ form.comuna }}
             </div>
         </div>
-    </div> 
+    </div>   
     <div class="form-group">
         <div class="row">
             <div class="col-xs-4">
                 <label for="exampleInputEmail1">Precio</label>
                 <div class="input-group">
                     <span class="input-group-addon">$</span>
-                    <input type="text" class="form-control input-lg">
+                    {{ form.precio|attr:"type:number"|attr:"step:100000"|attr:"min:0"|add_class:"form-control input-lg"|attr:"placeholder:Ej: 3500000" }}
                     <span class="input-group-addon">
-                        <input type="checkbox"> Conversable
+                        {{ form.conversable }} conversable
                     </span>
                 </div>
             </div>
@@ -93,7 +74,7 @@
     </div>                            
     <div class="form-group">
         <label for="exampleInputEmail1">Resumen sobre el vehículo</label>
-        <textarea class="form-control" rows="4" placeholder="Ej: Vehículo en excelente estado, mantenciones y papeles al día. Neumáticos cambiados hace 1 mes."></textarea>
+        {{ form.comentario|add_class:"form-control"|attr:"rows:4"|attr:"placeholder:Ej: Vehículo en excelente estado, mantenciones y papeles al día. Neumáticos cambiados hace 1 mes." }}
         <p class="help-block">Máximo 1000 caracteres</p>
     </div>
 

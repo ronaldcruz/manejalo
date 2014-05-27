@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from demografia.models import Ciudad
+from demografia.models import Comuna
 from stdimage.fields import StdImageField
 #from django_boto.s3.storage import S3Storage
 
+from anuncio.constants import DIRECCION_CHOICES, TRANSMISION_CHOICES, TIPO_VEHICULO_CHOICES
 #s3 = S3Storage()
+
+class Tipo(models.Model):
+    nombre = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.nombre
 
 class Marca(models.Model):
     nombre = models.CharField(max_length=200)
@@ -20,16 +27,13 @@ class Modelo(models.Model):
 
     def __unicode__(self):
         return self.nombre
-        
 
-class Version(models.Model):
-    modelo = models.ForeignKey(Modelo)
+
+class Carroceria(models.Model):
     nombre = models.CharField(max_length=200)
 
     def __unicode__(self):
         return self.nombre
-
-
 
 class Anuncio(models.Model):
 
@@ -38,83 +42,93 @@ class Anuncio(models.Model):
     version = models.CharField(max_length=200)
     anio = models.IntegerField()
     patente = models.CharField(max_length=10, null=True, blank=True)
-    tipo_vehiculo = models.CharField(max_length=100, null=True, blank=True)
-    carroceria = models.CharField(max_length=100, null=True, blank=True)
+    tipo_vehiculo = models.ForeignKey(Tipo)
+    carroceria = models.ForeignKey(Carroceria)
     kilometraje = models.IntegerField()
-    cilindrada = models.CharField(max_length=100)
+    cilindrada = models.CharField(max_length=100, null=True, blank=True)
     color = models.CharField(max_length=50)
     precio = models.IntegerField()
+    conversable = models.BooleanField(default=False)
 
+    comentario = models.TextField(null=True, blank=True)
+
+    potencia = models.CharField(max_length=100, null=True, blank=True)
+    motor = models.CharField(max_length=100, null=True, blank=True)
+    direccion = models.CharField(max_length=100, null=True, blank=True, choices=DIRECCION_CHOICES)
+    transmision = models.CharField(max_length=100, null=True, blank=True, choices=TRANSMISION_CHOICES)
 
     #Se utilizaran prefijos para poder agrupar los campos al desplegar 
     #el formulario
 
-    #c_ = confort  
-    c_aire_acondicionado = models.BooleanField(default=False)
-    c_vidrios_delanteros_elec = models.BooleanField(default=False)
-    c_vidrios_traseros_elec = models.BooleanField(default=False)
-    c_apertura_remota_maleta = models.BooleanField(default=False)
-    c_asiento_conductor_regulable = models.BooleanField(default=False)
-    c_asiento_traseros_abatible = models.BooleanField(default=False)
-    c_cierre_centralizado = models.BooleanField(default=False)
-    c_cierre_centralizado_mando = models.BooleanField(default=False)
-    c_velocidad_crucero = models.BooleanField(default=False)
-    c_espejos_exteriores_elec = models.BooleanField(default=False)
-    c_espejos_exteriores_abatibles_elec = models.BooleanField(default=False)
+    # = general
+    es_taxi = models.BooleanField(default=False)
+    unico_duenio = models.BooleanField(default=False, verbose_name=u'Unico Dueño')
+
+    # = confort  
+    aire_acondicionado = models.BooleanField(default=False)
+    vidrios_delanteros_elec = models.BooleanField(default=False)
+    vidrios_traseros_elec = models.BooleanField(default=False)
+    apertura_remota_maleta = models.BooleanField(default=False)
+    asiento_conductor_regulable = models.BooleanField(default=False)
+    asiento_traseros_abatible = models.BooleanField(default=False)
+    cierre_centralizado = models.BooleanField(default=False)
+    cierre_centralizado_mando = models.BooleanField(default=False)
+    velocidad_crucero = models.BooleanField(default=False)
+    espejos_exteriores_elec = models.BooleanField(default=False)
+    espejos_exteriores_abatibles_elec = models.BooleanField(default=False)
 
     #s_ = seguridad
 
-    s_airbag_conductor = models.BooleanField(default=False)
-    s_airbag_copiloto = models.BooleanField(default=False)
-    s_airbag_traseros = models.BooleanField(default=False)
-    s_alarma = models.BooleanField(default=False)
-    s_doble_traccion = models.BooleanField(default=False)
-    s_frenos_abs = models.BooleanField(default=False)
-    s_inmovilizador_motor = models.BooleanField(default=False)
-    s_neblineros_delanteros = models.BooleanField(default=False)
-    s_neblineros_traseros = models.BooleanField(default=False)
-    s_vidrios_lamina_seguridad = models.BooleanField(default=False)
+    airbag_conductor = models.BooleanField(default=False)
+    airbag_copiloto = models.BooleanField(default=False)
+    airbag_traseros = models.BooleanField(default=False)
+    alarma = models.BooleanField(default=False)
+    doble_traccion = models.BooleanField(default=False)
+    frenos_abs = models.BooleanField(default=False)
+    inmovilizador_motor = models.BooleanField(default=False)
+    neblineros_delanteros = models.BooleanField(default=False)
+    neblineros_traseros = models.BooleanField(default=False)
+    vidrios_lamina_seguridad = models.BooleanField(default=False)
     
     #e_ = exterior
-    e_luces_xenon = models.BooleanField(default=False)
-    e_barra_portamaletas = models.BooleanField(default=False)
-    e_portamaleta = models.BooleanField(default=False)
+    luces_xenon = models.BooleanField(default=False)
+    barra_portamaletas = models.BooleanField(default=False)
+    portamaleta = models.BooleanField(default=False)
     
     #m_ = multimedia
-    m_radio = models.BooleanField(default=False)
-    m_radio_bluetooth = models.BooleanField(default=False)
-    m_radio_auxiliar = models.BooleanField(default=False)
-    m_radio_usb = models.BooleanField(default=False)
-    m_radio_cd = models.BooleanField(default=False)
-    m_radio_dvd = models.BooleanField(default=False)
-    m_radio_pantalla = models.BooleanField(default=False)
-    m_radio_mp3 = models.BooleanField(default=False)
-    m_radio_sd = models.BooleanField(default=False)
-    m_radio_funciones_volante = models.BooleanField(default=False)
-    m_gps = models.BooleanField(default=False)
+    radio = models.BooleanField(default=False)
+    radio_bluetooth = models.BooleanField(default=False)
+    radio_auxiliar = models.BooleanField(default=False)
+    radio_usb = models.BooleanField(default=False)
+    radio_cd = models.BooleanField(default=False)
+    radio_dvd = models.BooleanField(default=False)
+    radio_pantalla = models.BooleanField(default=False)
+    radio_mp3 = models.BooleanField(default=False)
+    radio_sd = models.BooleanField(default=False)
+    radio_funciones_volante = models.BooleanField(default=False)
+    gps = models.BooleanField(default=False)
     
     destacado = models.BooleanField(default=False)
-    ciudad = models.ForeignKey(Ciudad)
+    comuna = models.ForeignKey(Comuna)
     
-    #imagen = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen1 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen2 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen3 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen4 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen5 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen6 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen7 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen8 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-    #imagen9 = StdImageField(upload_to='anuncios', blank=True, variations={'large': (640, 480, True), 'thumbnail': (125, 100, True)})
-
-    imagen = models.ImageField(upload_to='anuncios')
-    
+    imagen = models.ImageField(upload_to='anuncios', blank=True)
+    imagen1 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen2 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen3 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen4 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen5 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen6 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen7 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen8 = models.ImageField(upload_to='anuncios', blank=True)
+    imagen9 = models.ImageField(upload_to='anuncios', blank=True)
 
     def admin_imagen(self):
         if self.imagen:
-            return u'<img width="192" height="144" src="%s" />' % (self.imagen.thumbnail.url)
+            return u'<img width="192" height="144" src="%s" />' % (self.imagen)
         return u'&nbsp'
 
     admin_imagen.short_description = 'Vista Previa'
     admin_imagen.allow_tags = True
 
+
+    

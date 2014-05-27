@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.core.management.base import BaseCommand, CommandError
-from anuncio.models import Anuncio, Marca, Modelo, Version
+from anuncio.models import Anuncio, Marca, Modelo
 from app.models import DataScraping
 from demografia.models import Ciudad
 
@@ -14,7 +14,7 @@ import requests
 class Command(BaseCommand):
     
     def handle(self, *args, **options):
-        self.stdout.write('Cargando Marcas...')
+        self.stdout.write('Cargando marca y modelos...')
 
         marcas = [(128, 'Acura'), 
                     (1, 'Aleko'), 
@@ -170,15 +170,7 @@ class Command(BaseCommand):
                         mod.marca = mar
                         mod.save()
 
-                        versiones_json = requests.get('http://www.demotores.cl/frontend/posting/json/versionsByModelIdCountryId.html?model=%s&country=29' %modelo['id']).json()
-
-                        for version in versiones_json:
-                            
-                            if version['name'] != u'Otra Versión':
-                                ver = Version()
-                                ver.nombre = u'%s' %version['name']
-                                ver.modelo = mod
-                                ver.save()
             except UnicodeDecodeError:
                 pass
 
+        self.stdout.write('Carga de marca y modelo finalizada')

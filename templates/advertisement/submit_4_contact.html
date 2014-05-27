@@ -1,0 +1,24 @@
+{% load widget_tweaks %}
+
+<div class="tab-pane in" id="section_contact">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+        {{ form.contacto_nombre|add_class:"form-control"|attr:"placeholder:Ej: Juanito Perez" }}
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-4">
+                <label for="exampleInputEmail1">Correo</label>
+                {{ form.contacto_correo|add_class:"form-control"|attr:"placeholder:Ej: juan@dominio.cl" }}
+            </div>
+            <div class="col-xs-4">
+                <label for="exampleInputEmail1">Celular</label>
+                {{ form.contacto_telefono_movil|add_class:"form-control"|attr:"placeholder:Ej: 91234567" }}
+            </div>
+            <div class="col-xs-4">
+                <label for="exampleInputEmail1">Otro Teléfono de Contacto</label>
+                {{ form.contacto_telefono_otro|add_class:"form-control"|attr:"placeholder:Ej: 21234567" }}
+            </div>
+        </div>
+    </div>
+</div>

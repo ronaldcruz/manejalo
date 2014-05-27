@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,13 +37,16 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'widget_tweaks',
+    'form_utils',
+    'tastypie',
     'haystack',
     'usuarios',
     'demografia',
     'app',
     'anuncio',
     'south',
-    'django_nose',
+    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -128,4 +132,15 @@ HAYSTACK_CONNECTIONS  =  {
 
 STATIC_URL = '/static/'
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+)
 #TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+TASTYPIE_DEFAULT_FORMATS = ['json']

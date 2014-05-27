@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from anuncio.models import Anuncio
+from anuncio.forms import AnuncioForm
 
 def show(request, anuncio_id):
     anuncio = Anuncio.objects.get(id=anuncio_id)
@@ -7,5 +8,6 @@ def show(request, anuncio_id):
 
 
 def create(request):
-    return render(request, 'advertisement/submit.html', {})
+    form = AnuncioForm()
+    return render(request, 'advertisement/submit.html', {'form': form})
 

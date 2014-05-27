@@ -1,0 +1,55 @@
+{% load widget_tweaks %}
+
+<div class="tab-pane in" id="section_test">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Cilindrada</label>
+                {{ form.cilindrada|add_class:"form-control" }}
+            </div>
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Potencia</label>
+                {{ form.potencia|add_class:"form-control" }}
+            </div>
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Motor</label>
+                {{ form.motor|add_class:"form-control" }}
+            </div>
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Dirección</label>
+                {{ form.direccion }}
+            </div>
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Puertas</label>
+                {{ form.puertas }}
+            </div>
+            <div class="col-xs-2">
+                <label for="exampleInputEmail1">Transmisión</label>
+                {{ form.transmision }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        {% for fieldset in form.fieldsets %}
+            {% if fieldset.legend %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>{{ fieldset.legend }}</label>
+                    </div>
+                </div>    
+            {% endif %}
+            <div class="row">
+                {% for field in fieldset %}
+                    <div class="col-xs-3">
+                        <div class="checkbox">
+                            <label>
+                              {{ field }} {{ field.label|title }}
+                            </label>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+</div>
