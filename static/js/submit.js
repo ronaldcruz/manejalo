@@ -103,4 +103,30 @@ $(function() {
         readURL(this);
     });
 
+    $('#submitAdvertisement').click(function() {
+        // We use ``.ajax`` here due to the overrides.
+        $.ajax({
+            // Substitute in your API endpoint here.
+            url: '/api/anuncio/',
+            contentType: 'application/json',
+            type: 'POST',
+            data: $('#form_advertisement').serialize(),
+            // The ``X-CSRFToken`` evidently can't be set in the
+            // ``headers`` option, so force it here.
+            // This method requires jQuery 1.5+.
+            beforeSend: function(jqXHR, settings) {
+                // Pull the token out of the DOM.
+                jqXHR.setRequestHeader('X-CSRFToken', $('input[name=csrfmiddlewaretoken]').val());
+            },
+            success: function(data, textStatus, jqXHR) {
+                // Your processing of the data here.
+                console.log(data);
+            },
+            error: function(e, response) {
+                console.error(response);  
+            }
+        });
+    });
+
+
 });    

@@ -1,0 +1,27 @@
+{% load widget_tweaks %}
+
+<div class="tab-pane in" id="section_features">
+    <div class="form-group">
+        {% for fieldset in form.fieldsets %}
+            {% if fieldset.legend %}
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>{{ fieldset.legend }}</label>
+                    </div>
+                </div>    
+            {% endif %}
+            <div class="row">
+                {% for field in fieldset %}
+                    <div class="col-xs-3">
+                        <div class="checkbox">
+                            <label>
+                              {{ field }} {{ field.label|title }}
+                            </label>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+</div>

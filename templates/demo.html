@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html ng-app="JobApp">
+<head>
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet">
+
+    <script src="{% static 'assets/js/jquery.js' %}"></script>
+    <script src="{% static 'js/angular.js' %}"></script>
+    <script src="{% static 'js/angular-route.js' %}"></script>
+    <script src="{% static 'js/angular-locale_es-es.js' %}"></script>
+    
+
+</head>
+<body ng-controller="ReportController">
+    <div >
+    {$ 1 + 4 $}
+    </div>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

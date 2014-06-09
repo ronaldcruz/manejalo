@@ -54,6 +54,7 @@ urlpatterns += patterns('haystack.views',
 
 urlpatterns += patterns('app.views',
     url(r'^$', 'home', name='home'),
+    url(r'^demo$', 'demo', name='demo'),
 )
 
 

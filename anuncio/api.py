@@ -48,6 +48,7 @@ class AnuncioResource(ModelResource):
         resource_name = 'anuncio'
         validation = ModelFormValidation(form_class=AnuncioForm)
         authorization = Authorization()
+        always_return_data=True
 
     def hydrate_marca(self, bundle):
         if isinstance(bundle.data['marca'], int):

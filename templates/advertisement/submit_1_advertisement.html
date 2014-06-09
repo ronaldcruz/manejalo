@@ -1,30 +1,10 @@
 {% load widget_tweaks %}
 
-<div class="tab-pane in active" id="section_details">
+<div class="tab-pane in active" id="section_advertisement">
     <div class="form-group">
         <label for="exampleInputEmail1">Título</label>
         <input type="email" class="form-control input-lg" id="exampleInputEmail1" placeholder="Completa el formulario para generar el título de tu aviso" disabled>
         <p class="help-block">Este campo es generado automáticamente. Mientras más detalle de tu vehículo ingreses, más coincidencias en los resultados de búsqueda tendrá</p>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Tipo Vehículo</label>
-                {{ form.tipo_vehiculo }}
-            </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Patente</label>
-                {{ form.patente|add_class:"form-control"|attr:"placeholder:Ej: BCDF12" }}
-            </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Carrocería</label>
-                {{ form.carroceria }}
-            </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Año</label>
-                {{ form.anio }}
-            </div>
-        </div>
     </div>
     <div class="form-group">
         <div class="row">
@@ -40,14 +20,18 @@
                 <label for="exampleInputEmail1">Versión</label>
                 {{ form.version|add_class:"form-control" }}
             </div>
-            <div class="col-xs-3">
-                <label for="exampleInputEmail1">Color</label>
-                {{ form.color|add_class:"form-control"|attr:"placeholder:Ej: Azul Eléctrico" }}
-            </div>
         </div>
     </div> 
     <div class="form-group">
         <div class="row">
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Patente</label>
+                {{ form.patente|add_class:"form-control"|attr:"placeholder:Ej: BCDF12" }}
+            </div>
+            <div class="col-xs-3">
+                <label for="exampleInputEmail1">Año</label>
+                {{ form.anio }}
+            </div>
             <div class="col-xs-3">
                 <label for="exampleInputEmail1">Ciudad</label>
                 {{ form.comuna }}
@@ -77,5 +61,5 @@
         {{ form.comentario|add_class:"form-control"|attr:"rows:4"|attr:"placeholder:Ej: Vehículo en excelente estado, mantenciones y papeles al día. Neumáticos cambiados hace 1 mes." }}
         <p class="help-block">Máximo 1000 caracteres</p>
     </div>
-
+    
 </div>
