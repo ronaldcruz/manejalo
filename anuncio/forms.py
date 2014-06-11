@@ -6,9 +6,7 @@ from anuncio.models import Anuncio, Tipo, Marca, Modelo, Carroceria
 from anuncio.constants import TIPO_VEHICULO_CHOICES, DIRECCION_CHOICES, TRANSMISION_CHOICES
 from form_utils.forms import BetterModelForm
 
-from djangular.forms.angular_model import NgModelFormMixin
-
-class AnuncioForm(NgModelFormMixin, BetterModelForm):
+class AnuncioForm(BetterModelForm):
 
     marca = forms.ModelChoiceField(queryset=Marca.objects.all())
     modelo = forms.ModelChoiceField(queryset=Modelo.objects.all())

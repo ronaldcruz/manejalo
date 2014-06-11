@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from demografia.models import Comuna
-from stdimage.fields import StdImageField
 #from django_boto.s3.storage import S3Storage
 
 from anuncio.constants import DIRECCION_CHOICES, TRANSMISION_CHOICES, TIPO_VEHICULO_CHOICES
