@@ -46,7 +46,6 @@ INSTALLED_APPS = (
     'app',
     'anuncio',
     'south',
-    'sorl.thumbnail',
 )
 
 MIDDLEWARE_CLASSES = (
